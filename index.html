@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N RAKESH RAJ | BACKEND_ARCHITECT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-yellow': '#FBFF48',
+                        'neo-pink': '#FF70A6',
+                        'neo-blue': '#3B82F6',
+                        'neo-green': '#33FF57',
+                        'neo-orange': '#FF9F1C',
+                        'neo-white': '#FFFDF5',
+                        'neo-black': '#121212',
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000',
+                        'hard-lg': '8px 8px 0px 0px #000',
+                        'hard-xl': '12px 12px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFDF5;
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* SEAMLESS INFINITE MARQUEE */
+        .marquee { 
+            overflow: hidden; 
+            white-space: nowrap; 
+            display: flex; 
+            position: relative;
+            border-top: 8px solid black;
+            border-bottom: 8px solid black;
+        }
+        .marquee-content { 
+            display: flex; 
+            flex-shrink: 0;
+            min-width: 100%;
+            animation: scroll 30s linear infinite; 
+        }
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
+        
+        .cursor { display: inline-block; width: 10px; background-color: #33FF57; margin-left: 5px; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    </style>
+</head>
+
+<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+
+    <nav class="fixed top-0 w-full z-50 p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="bg-neo-white border-4 border-black px-4 py-1 text-2xl font-black shadow-hard uppercase">
+                RAKESHRAJ.dev
+            </div>
+            <div class="hidden md:flex gap-4 bg-white border-4 border-black p-2 shadow-hard font-mono font-bold text-sm">
+                <a href="#about-detailed" class="px-3 py-1 hover:bg-neo-yellow transition-colors">/ABOUT</a>
+                <a href="#projects" class="px-3 py-1 hover:bg-neo-pink transition-colors">/PROJECTS</a>
+                <a href="#blog" class="px-3 py-1 hover:bg-neo-blue hover:text-white transition-colors">/BLOG</a>
+                <a href="#contact" class="px-3 py-1 bg-neo-green border-l-4 border-black">CONTACT_ME</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center px-4 pt-20 border-b-8 border-black">
+        <div class="relative z-10 text-center max-w-5xl">
+            <div class="inline-block bg-neo-black text-neo-green border-4 border-black px-4 py-2 mb-6 shadow-hard-lg">
+                <p id="boot-text" class="font-mono font-bold text-sm md:text-base text-left min-h-[1.5em]"></p>
+            </div>
+            <h1 class="text-[12vw] md:text-[8vw] leading-[0.85] font-black uppercase tracking-tighter mb-8">
+                N RAKESH<br>
+                <span class="text-neo-blue">RAJ</span>
+            </h1>
+            <p class="font-mono text-lg md:text-2xl max-w-3xl mx-auto mb-10 bg-neo-yellow border-4 border-black p-6 shadow-hard rotate-1">
+                Aspiring Backend Developer specializing in Java and Spring Boot. Focused on REST APIs, Microservices, and scalable database design.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#projects" class="bg-neo-black text-white border-4 border-black px-10 py-5 text-xl font-bold shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase">My_Codes</a>
+                
+                <a href="https://drive.google.com/file/d/1x2DpAfrV_WMgqbbr2696oXwzt-9hBGfz/view?usp=sharing" target="_blank" class="bg-neo-white text-black border-4 border-black px-10 py-5 text-xl font-bold shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase flex items-center justify-center gap-2">
+                    <i class="ri-external-link-line"></i> View_Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-neo-orange py-4 marquee font-mono font-black text-2xl uppercase">
+        <div class="marquee-content">
+            <span class="px-4">/// JAVA /// SPRING BOOT /// POSTGRESQL /// DOCKER /// KUBERNETES /// AWS /// REST APIS /// MICROSERVICES /// KAFKA /// REDIS ///</span>
+            <span class="px-4">/// JAVA /// SPRING BOOT /// POSTGRESQL /// DOCKER /// KUBERNETES /// AWS /// REST APIS /// MICROSERVICES /// KAFKA /// REDIS ///</span>
+        </div>
+    </div>
+
+    <section id="about-detailed" class="py-24 px-4 bg-neo-white border-b-8 border-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5 reveal">
+                    <div class="relative bg-neo-blue border-8 border-black p-2 shadow-hard-xl">
+                        <div class="bg-neo-black p-4 border-4 border-black">
+                            <pre class="text-neo-green font-mono text-[11px] md:text-[13px] leading-tight">
+/* SYSTEM_ARCHITECT_PROFILE */
+{
+  "name": "N Rakesh Raj",
+  "role": "Backend Engineer",
+  "location": "Chennai, IN",
+  "education": "B.Tech CSE @ VIT",
+  "status": "Ready to Build"
+}
+                            </pre>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-neo-pink border-4 border-black p-4 font-black text-xl rotate-12">
+                            HIRE_ME_
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 reveal">
+                    <h2 class="text-6xl font-black uppercase mb-8 tracking-tighter">ABOUT_THE_ENGINEER</h2>
+                    <div class="font-mono text-lg space-y-6">
+                        <p class="bg-white border-l-8 border-neo-blue p-4 shadow-hard">
+                            I am a developer who enjoys solving complex problems through clean, efficient code. My journey started with a deep curiosity about how systems handle massive amounts of data reliably.
+                        </p>
+                        <p>
+                            Currently a B.Tech student at <span class="bg-neo-yellow px-2 font-bold">Vellore Institute of Technology (VIT)</span>, I've dedicated my time to mastering the Java ecosystem. I focus on the "why" behind the code to build performant and scalable architectures.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                            <div class="border-2 border-black p-4 bg-neo-pink/10">
+                                <h4 class="font-black text-neo-pink">CORE PHILOSOPHY</h4>
+                                <p class="text-sm">Write code that is easy to read, hard to break, and ready to scale.</p>
+                            </div>
+                            <div class="border-2 border-black p-4 bg-neo-green/10">
+                                <h4 class="font-black text-neo-green">CURRENT FOCUS</h4>
+                                <p class="text-sm">Mastering Microservices architecture and Cloud-native development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-4 max-w-7xl mx-auto">
+        <h2 class="text-7xl md:text-9xl font-black uppercase mb-20 tracking-tighter">PROJECT_LOGS</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
+            <article class="reveal bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="bg-neo-blue text-white font-mono px-3 py-1 border-2 border-black font-bold uppercase tracking-widest">Proj_01</span>
+                    <div class="flex gap-1">
+                        <div class="w-3 h-3 rounded-full bg-red-500 border border-black"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500 border border-black"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500 border border-black"></div>
+                    </div>
+                </div>
+                <h3 class="text-4xl font-black uppercase mb-4">Digital Wallet</h3>
+                <p class="font-mono text-gray-700 mb-6 italic">"> High-volume transaction engine using optimistic locking and Kafka background processing."</p>
+                <div class="flex flex-wrap gap-2 font-mono text-xs font-black">
+                    <span class="bg-neo-yellow border-2 border-black px-2 py-1 uppercase">Spring Boot</span>
+                    <span class="bg-neo-yellow border-2 border-black px-2 py-1 uppercase">Kafka</span>
+                </div>
+            </article>
+
+            <article class="reveal bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all md:mt-12">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="bg-neo-pink text-black font-mono px-3 py-1 border-2 border-black font-bold uppercase tracking-widest">Proj_02</span>
+                    <div class="flex gap-1">
+                        <div class="w-3 h-3 rounded-full bg-red-500 border border-black"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500 border border-black"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500 border border-black"></div>
+                    </div>
+                </div>
+                <h3 class="text-4xl font-black uppercase mb-4">Auth Server (IAM)</h3>
+                <p class="font-mono text-gray-700 mb-6 italic">"> Secure identity service using Spring Security, JWT, and token revocation via Redis."</p>
+                <div class="flex flex-wrap gap-2 font-mono text-xs font-black">
+                    <span class="bg-neo-green border-2 border-black px-2 py-1 uppercase">JWT</span>
+                    <span class="bg-neo-green border-2 border-black px-2 py-1 uppercase">Redis</span>
+                </div>
+            </article>
+        </div>
+        
+        <div class="reveal bg-neo-black border-8 border-black p-8 md:p-12 text-center shadow-hard-xl">
+            <h3 class="text-white text-4xl md:text-5xl font-black uppercase mb-4 tracking-tight">MORE_Projects</h3>
+            <p class="text-neo-green font-mono mb-8 text-lg">Engineered more repositories focused on robust backend systems and architectural research.</p>
+            <a href="https://github.com/rakeshraj22" target="_blank" class="bg-neo-green text-black border-4 border-black px-10 py-4 text-xl font-bold shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all inline-block uppercase tracking-tighter">GITHUB_PROFILE</a>
+        </div>
+    </section>
+
+    <section id="blog" class="py-24 px-4 max-w-7xl mx-auto border-t-8 border-black">
+        <div class="bg-neo-white border-8 border-black p-8 md:p-16 shadow-hard-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 font-mono text-xs opacity-20 hidden md:block uppercase">
+                Status: Publishing_Active
+            </div>
+            <div class="max-w-4xl">
+                <h2 class="text-6xl md:text-8xl font-black uppercase mb-6 tracking-tighter">Technical_Blog</h2>
+                <p class="font-mono text-xl mb-10 bg-neo-blue text-white inline-block p-2 border-2 border-black shadow-hard">
+                    Sharing insights on Backend Architecture, Java Performance, and Scalable Systems.
+                </p>
+                <div class="space-y-6">
+                    <div class="bg-neo-black text-neo-green p-6 border-4 border-black font-mono">
+                        <p class="mb-2">>>> cd /user/rakesh/articles</p>
+                        <p class="mb-2">>>> ls -all</p>
+                        <p class="opacity-60 italic">// Deep dives into Spring Boot, Kafka, and Database optimizations.</p>
+                    </div>
+                    <a href="https://blog.rakeshraj.tech/" target="_blank" class="bg-neo-pink text-neo-black border-4 border-black px-12 py-5 text-2xl font-black shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all inline-block uppercase tracking-tighter">
+                        Read My Articles <i class="ri-arrow-right-up-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-4 max-w-4xl mx-auto text-center">
+        <div class="bg-neo-yellow border-4 border-black p-12 shadow-hard-xl rotate-1">
+            <h2 class="text-6xl font-black uppercase mb-6 tracking-tighter">WANT TO HIRE ME?</h2>
+            
+            <div class="flex flex-col items-center gap-4 mb-8">
+                <p class="font-mono text-xl font-bold flex items-center gap-2">
+                    <i class="ri-mail-send-line"></i> rakeshrajcdr@gmail.com
+                </p>
+                <p class="bg-neo-black text-neo-green border-2 border-black px-4 py-2 font-mono text-xl font-bold shadow-hard -rotate-1">
+                    <i class="ri-phone-fill"></i> +91 7806842538
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="mailto:rakeshrajcdr@gmail.com" class="bg-black text-white border-4 border-black px-8 py-4 font-bold hover:bg-neo-pink transition-colors shadow-hard uppercase tracking-widest">Email_Me</a>
+                <a href="https://linkedin.com/in/rakeshraj22" target="_blank" class="bg-neo-blue text-white border-4 border-black px-8 py-4 font-bold hover:bg-neo-green transition-colors shadow-hard uppercase tracking-widest">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-12 px-4 text-center font-mono uppercase">
+        <p>© 2026 N RAKESH RAJ // Becoming.</p>
+        <p class="text-[10px] text-gray-500 mt-2">v2.0_NEO_BRUTALIST_BUILD</p>
+    </footer>
+
+    <script>
+        const textElement = document.getElementById('boot-text');
+        const lines = [
+            "> LOADING SPRING_BOOT_MODULES... DONE",
+            "> CONNECTING TO POSTGRESQL... SUCCESS",
+            "> SYSTEM READY. WELCOME USER."
+        ];
+        
+        let lineIndex = 0; charIndex = 0;
+        function typeEffect() {
+            if (lineIndex < lines.length) {
+                if (charIndex < lines[lineIndex].length) {
+                    textElement.innerHTML = lines.slice(0, lineIndex).join('<br>') + 
+                                          (lineIndex > 0 ? '<br>' : '') + 
+                                          lines[lineIndex].substring(0, charIndex + 1) + 
+                                          '<span class="cursor"></span>';
+                    charIndex++; 
+                    setTimeout(typeEffect, 40);
+                } else { 
+                    lineIndex++; 
+                    charIndex = 0; 
+                    setTimeout(typeEffect, 500); 
+                }
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('active'); 
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        window.onload = typeEffect;
+    </script>
+</body>
+</html>
