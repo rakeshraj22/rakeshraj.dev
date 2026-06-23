@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+    <link rel="icon" href="https://fav.farm/m🎖️">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Distributed API Rate Limiter | N Rakesh Raj</title>
+
+    <meta name="description"
+        content="Distributed API Rate Limiter built using Java, Spring Boot and Redis implementing Token Bucket algorithm.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-yellow': '#FBFF48',
+                        'neo-pink': '#FF70A6',
+                        'neo-blue': '#3B82F6',
+                        'neo-green': '#33FF57',
+                        'neo-orange': '#FF9F1C',
+                        'neo-white': '#FFFDF5',
+                        'neo-black': '#121212',
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000',
+                        'hard-lg': '8px 8px 0px 0px #000',
+                        'hard-xl': '12px 12px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        body {
+            background-color: #FFFDF5;
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .card-hover {
+            transition: all .2s ease;
+        }
+
+        .card-hover:hover {
+            transform: translate(-4px, -4px);
+        }
+
+    </style>
+
+</head>
+
+<body class="text-neo-black font-display">
+
+    <nav class="sticky top-0 z-50 p-4">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <a href="../index.html"
+                class="bg-neo-white border-4 border-black px-4 py-1 text-2xl font-black shadow-hard uppercase">
+
+                RAKESHRAJ.dev
+
+            </a>
+
+            <div class="flex gap-4">
+
+                <a href="../projects.html"
+                    class="bg-neo-yellow border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    ALL_PROJECTS
+
+                </a>
+
+                <a href="../index.html"
+                    class="bg-neo-blue text-white border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    HOME
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="py-24 px-4 max-w-7xl mx-auto">
+
+        <div class="bg-neo-green border-8 border-black shadow-hard-xl p-10">
+
+            <div class="font-mono font-black uppercase mb-6">
+
+                PROJ_03
+
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
+
+                DISTRIBUTED
+                <br>
+                API RATE LIMITER
+
+            </h1>
+
+            <p
+                class="font-mono text-xl bg-white border-4 border-black p-6 shadow-hard max-w-5xl">
+
+                Token Bucket based distributed rate limiting middleware
+                built using Redis atomic operations to prevent API abuse
+                and protect backend services from overload.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-8">
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    JAVA
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    SPRING BOOT
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    REDIS
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    CONCURRENCY
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    DISTRIBUTED SYSTEMS
+                </span>
+
+            </div>
+
+            <div class="flex gap-6 mt-10">
+
+                <a href="https://github.com/rakeshraj22/Distributed-rate-limiter"
+                    target="_blank"
+                    class="bg-black text-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    VIEW_SOURCE
+
+                </a>
+
+                <a href="../projects.html"
+                    class="bg-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    BACK_TO_PROJECTS
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- OVERVIEW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            OVERVIEW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                This project was developed to protect backend services
+                from excessive traffic and API abuse.
+
+                The system uses a Token Bucket algorithm backed by Redis
+                atomic operations to enforce rate limits consistently
+                across multiple application instances.
+
+                The solution sustained 10,000+ requests per second
+                while maintaining sub-50ms validation latency under load.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+        <!-- ARCHITECTURE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ARCHITECTURE
+        </h2>
+
+        <div class="bg-neo-green border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="bg-black border-4 border-black p-8">
+
+<pre class="text-neo-green font-mono text-sm md:text-base overflow-x-auto">
+
++----------------------+
+|      CLIENT          |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| SPRING BOOT API      |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| RATE LIMIT FILTER    |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| REDIS TOKEN BUCKET   |
++----------+-----------+
+           |
+     Tokens Available?
+           |
+      +----+----+
+      |         |
+     YES       NO
+      |         |
+      v         v
+
+ Process     HTTP 429
+ Request   Too Many Requests
+
+</pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TOKEN BUCKET -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            TOKEN_BUCKET_ALGORITHM
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                Each client receives a bucket containing a fixed number
+                of tokens.
+
+                Every incoming request consumes one token.
+
+                Tokens are replenished periodically at a configured rate.
+
+                When the bucket becomes empty, additional requests are
+                rejected until tokens become available again.
+
+                This approach allows controlled bursts while preventing
+                backend overload.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- REQUEST FLOW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            REQUEST_FLOW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <ol class="font-mono text-lg space-y-4">
+
+                <li>
+                    1. Request arrives at API Gateway.
+                </li>
+
+                <li>
+                    2. Rate Limiter intercepts request.
+                </li>
+
+                <li>
+                    3. Redis bucket state is retrieved.
+                </li>
+
+                <li>
+                    4. Token availability is checked.
+                </li>
+
+                <li>
+                    5. Token is consumed atomically.
+                </li>
+
+                <li>
+                    6. Request proceeds or is rejected.
+                </li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+    <!-- REDIS -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            REDIS_ATOMIC_OPERATIONS
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Atomic Updates
+                </h3>
+
+                <p class="font-mono">
+
+                    Redis guarantees bucket state consistency
+                    during concurrent access.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    High Throughput
+                </h3>
+
+                <p class="font-mono">
+
+                    In-memory operations enable extremely
+                    fast request validation.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONCURRENCY -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            CONCURRENCY_HANDLING
+        </h2>
+
+        <div class="bg-neo-yellow border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                Multiple application instances may validate requests
+                simultaneously.
+
+                Redis atomic operations ensure token counts remain
+                consistent under heavy concurrent traffic.
+
+                This prevents race conditions and ensures accurate
+                rate limit enforcement across distributed deployments.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERFORMANCE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            PERFORMANCE
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="bg-neo-green border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    10K+
+                </div>
+
+                <p class="font-mono font-bold">
+                    REQUESTS / SECOND
+                </p>
+
+            </div>
+
+            <div class="bg-neo-blue text-white border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    &lt;50ms
+                </div>
+
+                <p class="font-mono font-bold">
+                    VALIDATION LATENCY
+                </p>
+
+            </div>
+
+            <div class="bg-neo-pink border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    0
+                </div>
+
+                <p class="font-mono font-bold">
+                    RATE LIMIT BYPASS
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- LOAD TESTING -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            LOAD_TESTING
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed mb-6">
+
+                Extensive concurrent load testing was performed
+                to validate the correctness and scalability of
+                the rate limiting mechanism.
+
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <div class="border-4 border-black p-6 bg-neo-yellow">
+
+                    <h3 class="text-3xl font-black mb-4">
+                        10K+
+                    </h3>
+
+                    <p class="font-mono">
+                        Requests Per Second
+                    </p>
+
+                </div>
+
+                <div class="border-4 border-black p-6 bg-neo-green">
+
+                    <h3 class="text-3xl font-black mb-4">
+                        0
+                    </h3>
+
+                    <p class="font-mono">
+                        Bypass Events
+                    </p>
+
+                </div>
+
+                <div class="border-4 border-black p-6 bg-neo-pink">
+
+                    <h3 class="text-3xl font-black mb-4">
+                        Stable
+                    </h3>
+
+                    <p class="font-mono">
+                        Under Sustained Load
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ENGINEERING CHALLENGES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ENGINEERING_CHALLENGES
+        </h2>
+
+        <div class="space-y-8">
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Distributed State
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Maintaining consistent bucket state across
+                    multiple application instances required
+                    Redis-backed atomic operations.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Race Conditions
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Concurrent requests could attempt token
+                    consumption simultaneously.
+
+                    Atomic Redis commands ensured consistency.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    High Throughput
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    The solution needed to validate requests
+                    with minimal latency while sustaining
+                    thousands of requests per second.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LESSONS LEARNED -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            LESSONS_LEARNED
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                This project deepened my understanding of
+                distributed systems, concurrency control,
+                Redis internals and scalable API protection.
+
+                It also provided hands-on experience with
+                designing low-latency middleware capable of
+                operating under high request volumes.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="py-24 px-4 max-w-5xl mx-auto text-center">
+
+        <div class="bg-neo-green border-4 border-black p-12 shadow-hard-xl">
+
+            <h2 class="text-6xl font-black uppercase mb-8">
+
+                VIEW_SOURCE_CODE
+
+            </h2>
+
+            <p class="font-mono text-lg mb-8">
+
+                Explore the Token Bucket implementation,
+                Redis integration and load testing logic.
+
+            </p>
+
+            <a href="https://github.com/rakeshraj22/Distributed-rate-limiter"
+               target="_blank"
+               class="bg-black text-white border-4 border-black px-10 py-5 text-xl font-black shadow-hard uppercase inline-block">
+
+                OPEN_GITHUB
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-black text-white py-12 px-4 text-center font-mono uppercase">
+
+        <p>
+            © 2026 N RAKESH RAJ // DISTRIBUTED_API_RATE_LIMITER
+        </p>
+
+        <p class="text-[10px] text-gray-500 mt-2">
+            Product of Becoming Labs. Built with AI.
+        </p>
+
+    </footer>
+
+</body>
+</html>

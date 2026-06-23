@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+    <link rel="icon" href="https://fav.farm/m🎖️">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Wallet Backend System | N Rakesh Raj</title>
+
+    <meta name="description"
+        content="Digital Wallet Backend System built using Java, Spring Boot and MySQL supporting secure peer-to-peer transactions.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-yellow': '#FBFF48',
+                        'neo-pink': '#FF70A6',
+                        'neo-blue': '#3B82F6',
+                        'neo-green': '#33FF57',
+                        'neo-orange': '#FF9F1C',
+                        'neo-white': '#FFFDF5',
+                        'neo-black': '#121212',
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000',
+                        'hard-lg': '8px 8px 0px 0px #000',
+                        'hard-xl': '12px 12px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        body {
+            background-color: #FFFDF5;
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .card-hover {
+            transition: all .2s ease;
+        }
+
+        .card-hover:hover {
+            transform: translate(-4px, -4px);
+        }
+
+    </style>
+
+</head>
+
+<body class="text-neo-black font-display">
+
+    <nav class="sticky top-0 z-50 p-4">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <a href="../index.html"
+                class="bg-neo-white border-4 border-black px-4 py-1 text-2xl font-black shadow-hard uppercase">
+
+                RAKESHRAJ.dev
+
+            </a>
+
+            <div class="flex gap-4">
+
+                <a href="../projects.html"
+                    class="bg-neo-yellow border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    ALL_PROJECTS
+
+                </a>
+
+                <a href="../index.html"
+                    class="bg-neo-blue text-white border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    HOME
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="py-24 px-4 max-w-7xl mx-auto">
+
+        <div class="bg-neo-pink border-8 border-black shadow-hard-xl p-10">
+
+            <div class="font-mono font-black uppercase mb-6">
+
+                PROJ_04
+
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
+
+                DIGITAL WALLET
+                <br>
+                BACKEND SYSTEM
+
+            </h1>
+
+            <p
+                class="font-mono text-xl bg-white border-4 border-black p-6 shadow-hard max-w-5xl">
+
+                Secure wallet backend supporting peer-to-peer fund transfers,
+                transaction history management, user authentication and
+                concurrent transaction processing.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-8">
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    JAVA
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    SPRING BOOT
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    MYSQL
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    JUNIT 5
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    MOCKITO
+                </span>
+
+            </div>
+
+            <div class="flex gap-6 mt-10">
+
+                <a href="https://github.com/rakeshraj22/Digital-Wallet"
+                    target="_blank"
+                    class="bg-black text-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    VIEW_SOURCE
+
+                </a>
+
+                <a href="../projects.html"
+                    class="bg-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    BACK_TO_PROJECTS
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- OVERVIEW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            OVERVIEW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                The Digital Wallet Backend System was designed to support
+                secure peer-to-peer money transfers while maintaining
+                transaction consistency and reliability.
+
+                The application provides wallet creation, balance management,
+                transaction history and transfer functionality using
+                Spring Boot and MySQL.
+
+                Comprehensive testing was implemented using JUnit 5 and
+                Mockito to validate critical wallet operations.
+
+            </p>
+
+        </div>
+
+    </section>
+
+        <!-- ARCHITECTURE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ARCHITECTURE
+        </h2>
+
+        <div class="bg-neo-pink border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="bg-black border-4 border-black p-8">
+
+<pre class="text-neo-green font-mono text-sm md:text-base overflow-x-auto">
+
++----------------------+
+|      USER APP        |
++----------+-----------+
+           |
+           v
+
++----------------------+
+|   SPRING BOOT API    |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| AUTHENTICATION       |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| WALLET SERVICE       |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| TRANSACTION SERVICE  |
++----------+-----------+
+           |
+           v
+
++----------------------+
+|       MYSQL          |
++----------------------+
+
+</pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- WALLET TRANSFER FLOW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            TRANSFER_FLOW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <ol class="font-mono text-lg space-y-4">
+
+                <li>1. User initiates transfer request.</li>
+
+                <li>2. Sender wallet balance validated.</li>
+
+                <li>3. Transaction created.</li>
+
+                <li>4. Sender balance debited.</li>
+
+                <li>5. Receiver balance credited.</li>
+
+                <li>6. Transaction committed.</li>
+
+                <li>7. History updated.</li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            KEY_FEATURES
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Wallet Management
+                </h3>
+
+                <p class="font-mono">
+
+                    Create wallets and manage balances
+                    securely through REST APIs.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    P2P Transfers
+                </h3>
+
+                <p class="font-mono">
+
+                    Transfer funds between wallets
+                    with transactional guarantees.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Transaction History
+                </h3>
+
+                <p class="font-mono">
+
+                    Complete transaction audit trail
+                    for every wallet.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Automated Testing
+                </h3>
+
+                <p class="font-mono">
+
+                    JUnit and Mockito based unit tests
+                    validating critical flows.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DATABASE DESIGN -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            DATABASE_DESIGN
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+<pre class="font-mono text-sm overflow-x-auto">
+
+USERS
+ ├── id
+ ├── name
+ └── email
+
+WALLETS
+ ├── id
+ ├── user_id
+ └── balance
+
+TRANSACTIONS
+ ├── id
+ ├── sender_wallet
+ ├── receiver_wallet
+ ├── amount
+ └── created_at
+
+</pre>
+
+        </div>
+
+    </section>
+
+    <!-- TRANSACTION MANAGEMENT -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            TRANSACTION_MANAGEMENT
+        </h2>
+
+        <div class="bg-neo-yellow border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                Wallet transfers are executed within a database
+                transaction to ensure atomicity.
+
+                Either both balance updates succeed or the
+                entire transfer is rolled back.
+
+                This guarantees consistency and prevents
+                partial transfers.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- SECURITY -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            SECURITY_FEATURES
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-2xl font-black uppercase mb-4">
+                    Validation
+                </h3>
+
+                <p class="font-mono">
+                    Request validation before processing.
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-2xl font-black uppercase mb-4">
+                    Balance Checks
+                </h3>
+
+                <p class="font-mono">
+                    Prevents overdraft transactions.
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard">
+
+                <h3 class="text-2xl font-black uppercase mb-4">
+                    ACID Transactions
+                </h3>
+
+                <p class="font-mono">
+                    Ensures consistency of wallet data.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+        <!-- ENGINEERING CHALLENGES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ENGINEERING_CHALLENGES
+        </h2>
+
+        <div class="space-y-8">
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Concurrent Transfers
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Multiple users may attempt transactions
+                    simultaneously.
+
+                    The system uses transactional guarantees
+                    to prevent inconsistent balances.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Data Consistency
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    A transfer involves multiple database
+                    updates.
+
+                    Atomic transactions ensure both debit
+                    and credit operations succeed together.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Transaction History
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Every wallet operation is recorded,
+                    providing a complete audit trail
+                    for users and administrators.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TESTING STRATEGY -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            TESTING_STRATEGY
+        </h2>
+
+        <div class="bg-neo-green border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="text-2xl font-black uppercase mb-4">
+                        JUnit 5
+                    </h3>
+
+                    <p class="font-mono">
+                        Unit testing of business logic.
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="text-2xl font-black uppercase mb-4">
+                        Mockito
+                    </h3>
+
+                    <p class="font-mono">
+                        Mocking dependencies and services.
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="text-2xl font-black uppercase mb-4">
+                        Validation Tests
+                    </h3>
+
+                    <p class="font-mono">
+                        Transfer and balance verification.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RESULTS -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            PROJECT_RESULTS
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="bg-neo-yellow border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    ACID
+                </div>
+
+                <p class="font-mono font-bold">
+                    TRANSACTION SAFETY
+                </p>
+
+            </div>
+
+            <div class="bg-neo-blue text-white border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    P2P
+                </div>
+
+                <p class="font-mono font-bold">
+                    FUND TRANSFERS
+                </p>
+
+            </div>
+
+            <div class="bg-neo-pink border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    JUNIT
+                </div>
+
+                <p class="font-mono font-bold">
+                    TEST COVERAGE
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LESSONS LEARNED -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            LESSONS_LEARNED
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                This project strengthened my understanding of
+                transactional systems, database consistency,
+                service-layer architecture and automated testing.
+
+                Building the wallet backend provided practical
+                experience with Spring Boot, MySQL, JUnit 5,
+                Mockito and enterprise backend development
+                practices.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="py-24 px-4 max-w-5xl mx-auto text-center">
+
+        <div class="bg-neo-pink border-4 border-black p-12 shadow-hard-xl">
+
+            <h2 class="text-6xl font-black uppercase mb-8">
+
+                VIEW_SOURCE_CODE
+
+            </h2>
+
+            <p class="font-mono text-lg mb-8">
+
+                Explore the wallet service implementation,
+                transaction management and testing strategy.
+
+            </p>
+
+            <a href="https://github.com/rakeshraj22/Digital-Wallet"
+               target="_blank"
+               class="bg-black text-white border-4 border-black px-10 py-5 text-xl font-black shadow-hard uppercase inline-block">
+
+                OPEN_GITHUB
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-black text-white py-12 px-4 text-center font-mono uppercase">
+
+        <p>
+            © 2026 N RAKESH RAJ // DIGITAL_WALLET_BACKEND_SYSTEM
+        </p>
+
+        <p class="text-[10px] text-gray-500 mt-2">
+            Product of Becoming Labs. Built with AI.
+        </p>
+
+    </footer>
+
+</body>
+</html>

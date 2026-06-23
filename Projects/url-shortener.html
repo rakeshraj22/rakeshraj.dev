@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+    <link rel="icon" href="https://fav.farm/m🎖️">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL Shortener & Analytics | N Rakesh Raj</title>
+
+    <meta name="description"
+        content="Distributed URL shortening platform built using Java, Spring Boot, Angular, PostgreSQL, Redis and Docker.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-yellow': '#FBFF48',
+                        'neo-pink': '#FF70A6',
+                        'neo-blue': '#3B82F6',
+                        'neo-green': '#33FF57',
+                        'neo-orange': '#FF9F1C',
+                        'neo-white': '#FFFDF5',
+                        'neo-black': '#121212',
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000',
+                        'hard-lg': '8px 8px 0px 0px #000',
+                        'hard-xl': '12px 12px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        body {
+            background-color: #FFFDF5;
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .card-hover {
+            transition: all .2s ease;
+        }
+
+        .card-hover:hover {
+            transform: translate(-4px, -4px);
+        }
+
+    </style>
+
+</head>
+
+<body class="text-neo-black font-display">
+
+    <!-- NAVBAR -->
+
+    <nav class="sticky top-0 z-50 p-4">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <a href="../index.html"
+                class="bg-neo-white border-4 border-black px-4 py-1 text-2xl font-black shadow-hard uppercase">
+
+                RAKESHRAJ.dev
+
+            </a>
+
+            <div class="flex gap-4">
+
+                <a href="../projects.html"
+                    class="bg-neo-yellow border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    ALL_PROJECTS
+
+                </a>
+
+                <a href="../index.html"
+                    class="bg-neo-blue text-white border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    HOME
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="py-24 px-4 max-w-7xl mx-auto">
+
+        <div class="bg-neo-blue border-8 border-black shadow-hard-xl p-10 text-white">
+
+            <div class="font-mono font-black uppercase mb-6">
+
+                PROJ_02
+
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
+
+                URL SHORTENER
+                <br>
+                & ANALYTICS
+
+            </h1>
+
+            <p
+                class="font-mono text-xl bg-white text-black border-4 border-black p-6 shadow-hard max-w-5xl">
+
+                Distributed URL shortening platform using Base62 encoding,
+                Redis caching, PostgreSQL persistence and a real-time
+                analytics dashboard.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-8">
+
+                <span class="bg-white text-black border-2 border-black px-3 py-2 font-mono font-bold">
+                    JAVA
+                </span>
+
+                <span class="bg-white text-black border-2 border-black px-3 py-2 font-mono font-bold">
+                    SPRING BOOT
+                </span>
+
+                <span class="bg-white text-black border-2 border-black px-3 py-2 font-mono font-bold">
+                    ANGULAR
+                </span>
+
+                <span class="bg-white text-black border-2 border-black px-3 py-2 font-mono font-bold">
+                    POSTGRESQL
+                </span>
+
+                <span class="bg-white text-black border-2 border-black px-3 py-2 font-mono font-bold">
+                    REDIS
+                </span>
+
+                <span class="bg-white text-black border-2 border-black px-3 py-2 font-mono font-bold">
+                    DOCKER
+                </span>
+
+            </div>
+
+            <div class="flex gap-6 mt-10">
+
+                <a href="https://github.com/rakeshraj22/url-shortener-dashboard"
+                    target="_blank"
+                    class="bg-black text-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    VIEW_SOURCE
+
+                </a>
+
+                <a href="../projects.html"
+                    class="bg-white text-black border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    BACK_TO_PROJECTS
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- OVERVIEW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            OVERVIEW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                This platform converts long URLs into compact Base62 encoded
+                links and provides detailed analytics on usage patterns.
+
+                The application uses Redis as a caching layer above PostgreSQL,
+                achieving an 85%+ cache hit ratio while reducing read latency
+                by approximately 60%.
+
+                The system also includes a real-time analytics dashboard built
+                with Angular for tracking redirects, traffic and usage metrics.
+
+            </p>
+
+        </div>
+
+    </section>
+
+        <!-- ARCHITECTURE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ARCHITECTURE
+        </h2>
+
+        <div class="bg-neo-blue border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="bg-black border-4 border-black p-8">
+
+<pre class="text-neo-green font-mono text-sm md:text-base overflow-x-auto">
+
++----------------------+
+|       USER           |
++----------+-----------+
+           |
+           v
+
++----------------------+
+|     ANGULAR UI       |
++----------+-----------+
+           |
+           v
+
++----------------------+
+|  SPRING BOOT API     |
++----------+-----------+
+           |
+           v
+
++----------------------+
+|     REDIS CACHE      |
++----------+-----------+
+           |
+      Cache Hit?
+           |
+     +-----+-----+
+     |           |
+    YES         NO
+     |           |
+     v           v
+
+ Response   +------------------+
+            |   POSTGRESQL     |
+            +--------+---------+
+                     |
+                     v
+
+            Update Redis Cache
+
+</pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BASE62 ENCODING -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            BASE62_ENCODING
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                Long URLs are converted into compact short URLs
+                using a Base62 encoding strategy.
+
+                Each generated identifier uses:
+
+                <br><br>
+
+                0-9 → 10 characters<br>
+                a-z → 26 characters<br>
+                A-Z → 26 characters
+
+                <br><br>
+
+                Total = 62 possible symbols
+
+                <br><br>
+
+                This allows millions of unique URLs while
+                maintaining compact link sizes.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- KEY FEATURES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            KEY_FEATURES
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Base62 Encoding
+                </h3>
+
+                <p class="font-mono">
+
+                    Generates compact unique URLs using
+                    efficient Base62 conversion.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Redis Caching
+                </h3>
+
+                <p class="font-mono">
+
+                    Frequently accessed URLs are served
+                    directly from Redis.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Analytics Dashboard
+                </h3>
+
+                <p class="font-mono">
+
+                    Real-time tracking of clicks,
+                    redirects and URL usage metrics.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Docker Deployment
+                </h3>
+
+                <p class="font-mono">
+
+                    Fully containerized application
+                    supporting consistent deployments.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- REDIS CACHE STRATEGY -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            REDIS_CACHE_LAYER
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <ol class="font-mono text-lg space-y-4">
+
+                <li>
+                    1. Request arrives with short URL.
+                </li>
+
+                <li>
+                    2. Redis lookup is performed.
+                </li>
+
+                <li>
+                    3. Cache Hit → URL returned immediately.
+                </li>
+
+                <li>
+                    4. Cache Miss → PostgreSQL queried.
+                </li>
+
+                <li>
+                    5. Result stored back into Redis.
+                </li>
+
+                <li>
+                    6. Future requests become Cache Hits.
+                </li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+    <!-- ANALYTICS DASHBOARD -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ANALYTICS_DASHBOARD
+        </h2>
+
+        <div class="bg-neo-yellow border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="font-black text-2xl uppercase mb-4">
+                        Total Clicks
+                    </h3>
+
+                    <p class="font-mono">
+                        Tracks overall redirect volume.
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="font-black text-2xl uppercase mb-4">
+                        Popular Links
+                    </h3>
+
+                    <p class="font-mono">
+                        Identifies highest traffic URLs.
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="font-black text-2xl uppercase mb-4">
+                        Usage Metrics
+                    </h3>
+
+                    <p class="font-mono">
+                        Provides real-time analytics insights.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PERFORMANCE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            PERFORMANCE
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="bg-neo-green border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    85%+
+                </div>
+
+                <p class="font-mono font-bold">
+                    CACHE HIT RATIO
+                </p>
+
+            </div>
+
+            <div class="bg-neo-yellow border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    60%
+                </div>
+
+                <p class="font-mono font-bold">
+                    LATENCY REDUCED
+                </p>
+
+            </div>
+
+            <div class="bg-neo-pink border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    DOCKER
+                </div>
+
+                <p class="font-mono font-bold">
+                    CONTAINERIZED
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- ENGINEERING CHALLENGES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ENGINEERING_CHALLENGES
+        </h2>
+
+        <div class="space-y-8">
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    URL Uniqueness
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Designing a short URL generation strategy that avoids
+                    collisions while maintaining compact identifiers.
+
+                    Base62 encoding was implemented to support a large
+                    number of unique URLs without increasing link length.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Database Load
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Redirect requests are highly read-intensive.
+
+                    Redis was introduced as a caching layer above
+                    PostgreSQL, significantly reducing database load
+                    and improving response times.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Real-Time Analytics
+                </h3>
+
+                <p class="font-mono text-lg">
+
+                    Click events needed to be captured and reflected
+                    within the analytics dashboard while maintaining
+                    responsive redirect performance.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RESULTS -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            PROJECT_RESULTS
+        </h2>
+
+        <div class="bg-neo-green border-4 border-black p-10 shadow-hard-xl">
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <div class="bg-white border-4 border-black p-6 text-center">
+
+                    <div class="text-5xl font-black mb-4">
+                        85%+
+                    </div>
+
+                    <p class="font-mono font-bold uppercase">
+                        Cache Hit Ratio
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6 text-center">
+
+                    <div class="text-5xl font-black mb-4">
+                        60%
+                    </div>
+
+                    <p class="font-mono font-bold uppercase">
+                        Read Latency Reduction
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6 text-center">
+
+                    <div class="text-5xl font-black mb-4">
+                        Docker
+                    </div>
+
+                    <p class="font-mono font-bold uppercase">
+                        Containerized Deployment
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LESSONS LEARNED -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            LESSONS_LEARNED
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                Building this project strengthened my understanding of
+                caching strategies, database optimization, REST API design,
+                frontend-backend integration and distributed application
+                architecture.
+
+                It also provided hands-on experience working with Redis,
+                PostgreSQL, Docker and Angular in a production-style
+                full-stack environment.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="py-24 px-4 max-w-5xl mx-auto text-center">
+
+        <div class="bg-neo-orange border-4 border-black p-12 shadow-hard-xl">
+
+            <h2 class="text-6xl font-black uppercase mb-8">
+
+                VIEW_SOURCE_CODE
+
+            </h2>
+
+            <p class="font-mono text-lg mb-8">
+
+                Explore the implementation, architecture and source code.
+
+            </p>
+
+            <a href="https://github.com/rakeshraj22/url-shortener-dashboard"
+               target="_blank"
+               class="bg-black text-white border-4 border-black px-10 py-5 text-xl font-black shadow-hard uppercase inline-block">
+
+                OPEN_GITHUB
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-black text-white py-12 px-4 text-center font-mono uppercase">
+
+        <p>
+            © 2026 N RAKESH RAJ // URL_SHORTENER_ANALYTICS
+        </p>
+
+        <p class="text-[10px] text-gray-500 mt-2">
+            Product of Becoming Labs. Built with AI.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

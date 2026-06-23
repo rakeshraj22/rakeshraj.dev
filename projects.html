@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+<link rel="icon" href="https://fav.farm/m🎖️">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N Rakesh Raj | Project Logs</title>
+
+<meta name="description"
+content="Engineering project archive featuring Java, Spring Boot, Kafka, Redis and Distributed Systems projects.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@800&display=swap"
+rel="stylesheet">
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+'neo-yellow': '#FBFF48',
+'neo-pink': '#FF70A6',
+'neo-blue': '#3B82F6',
+'neo-green': '#33FF57',
+'neo-orange': '#FF9F1C',
+'neo-white': '#FFFDF5',
+'neo-black': '#121212',
+},
+fontFamily: {
+'display': ['"Space Grotesk"', 'sans-serif'],
+'mono': ['"JetBrains Mono"', 'monospace'],
+},
+boxShadow: {
+'hard': '4px 4px 0px 0px #000',
+'hard-lg': '8px 8px 0px 0px #000',
+'hard-xl': '12px 12px 0px 0px #000',
+}
+}
+}
+}
+</script>
+
+<style>
+
+body{
+background-color:#FFFDF5;
+background-image:radial-gradient(#000 1px,transparent 1px);
+background-size:30px 30px;
+}
+
+.project-card{
+transition:all .2s ease;
+}
+
+.project-card:hover{
+transform:translate(-4px,-4px);
+}
+
+</style>
+
+</head>A
+
+<body class="text-neo-black font-display">
+
+<nav class="sticky top-0 z-50 p-4">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+
+<a href="index.html"
+class="bg-neo-white border-4 border-black px-4 py-1 text-2xl font-black shadow-hard uppercase">
+
+RAKESHRAJ.dev
+
+</a>
+
+<a href="index.html"
+class="bg-neo-blue text-white border-4 border-black px-4 py-2 shadow-hard font-bold uppercase">
+
+BACK_HOME
+
+</a>
+
+</div>
+
+</nav>
+
+<section class="py-24 px-4 max-w-7xl mx-auto">
+
+<h1 class="text-7xl md:text-9xl font-black uppercase tracking-tighter mb-8">
+
+PROJECT_LOGS
+
+</h1>
+
+<p class="font-mono text-xl bg-neo-yellow border-4 border-black p-6 shadow-hard mb-16">
+
+A collection of backend systems, distributed applications,
+event-driven architectures and engineering projects.
+
+</p>
+
+<div class="bg-neo-orange border-4 border-black p-8 shadow-hard-xl mb-16">
+
+<div class="font-mono font-bold uppercase mb-4">
+
+FEATURED_PROJECT
+
+</div>
+
+<h2 class="text-5xl font-black uppercase mb-4">
+
+EVENT-DRIVEN NOTIFICATION SERVICE
+
+</h2>
+
+<p class="font-mono text-lg">
+
+Kafka + RabbitMQ powered distributed notification platform
+with retry mechanisms, dead-letter queues and multi-channel delivery.
+
+</p>
+
+</div>
+
+<div class="grid md:grid-cols-4 gap-6 mb-20">
+
+<div class="bg-neo-yellow border-4 border-black p-6 shadow-hard text-center">
+
+<div class="text-5xl font-black">
+10+
+</div>
+
+<p class="font-mono font-bold uppercase">
+PROJECTS
+</p>
+
+</div>
+
+<div class="bg-neo-green border-4 border-black p-6 shadow-hard text-center">
+
+<div class="text-5xl font-black">
+JAVA
+</div>
+
+<p class="font-mono font-bold uppercase">
+PRIMARY STACK
+</p>
+
+</div>
+
+<div class="bg-neo-blue text-white border-4 border-black p-6 shadow-hard text-center">
+
+<div class="text-5xl font-black">
+API
+</div>
+
+<p class="font-mono font-bold uppercase">
+BACKEND SYSTEMS
+</p>
+
+</div>
+
+<div class="bg-neo-pink border-4 border-black p-6 shadow-hard text-center">
+
+<div class="text-5xl font-black">
+OSS
+</div>
+
+<p class="font-mono font-bold uppercase">
+SOURCE AVAILABLE
+</p>
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+    <!-- PROJECT 01 -->
+
+<div class="project-card bg-white border-4 border-black p-8 shadow-hard">
+
+    <div class="flex justify-between mb-6">
+
+        <span class="bg-neo-orange border-2 border-black px-3 py-1 font-mono font-bold">
+
+            PROJ_01
+
+        </span>
+
+        <span class="bg-neo-green border-2 border-black px-3 py-1 font-mono font-bold">
+
+            FEATURED
+
+        </span>
+
+    </div>
+
+    <h2 class="text-4xl font-black uppercase mb-4">
+
+        Event-Driven Notification Service
+
+    </h2>
+
+    <p class="font-mono mb-6">
+
+        Kafka and RabbitMQ powered notification platform supporting
+        Email, SMS and Push delivery with retry mechanisms,
+        dead-letter queues and guaranteed message processing.
+
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            JAVA
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            SPRING BOOT
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            KAFKA
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            RABBITMQ
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            POSTGRESQL
+        </span>
+
+    </div>
+
+    <div class="flex gap-4">
+
+        <a href="Projects\notification-service.html"
+           class="bg-black text-white px-5 py-3 border-2 border-black font-bold uppercase">
+
+            CASE_STUDY
+
+        </a>
+
+        <a href="https://github.com/rakeshraj22?tab=repositories"
+           target="_blank"
+           class="border-2 border-black px-5 py-3 font-bold uppercase">
+
+            SOURCE
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- PROJECT 02 -->
+
+<div class="project-card bg-white border-4 border-black p-8 shadow-hard">
+
+    <div class="flex justify-between mb-6">
+
+        <span class="bg-neo-blue text-white border-2 border-black px-3 py-1 font-mono font-bold">
+
+            PROJ_02
+
+        </span>
+
+        <span class="border-2 border-black px-3 py-1 font-mono font-bold">
+
+            FULL STACK
+
+        </span>
+
+    </div>
+
+    <h2 class="text-4xl font-black uppercase mb-4">
+
+        URL Shortener & Analytics
+
+    </h2>
+
+    <p class="font-mono mb-6">
+
+        Distributed URL shortening platform using Base62 encoding,
+        Redis caching, PostgreSQL persistence and a real-time
+        analytics dashboard.
+
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            JAVA
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            SPRING BOOT
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            ANGULAR
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            REDIS
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            POSTGRESQL
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            DOCKER
+        </span>
+
+    </div>
+
+    <div class="bg-neo-yellow border-2 border-black p-4 mb-6">
+
+        <p class="font-mono font-bold">
+
+            85%+ Cache Hit Ratio
+            <br>
+            60% Read Latency Reduction
+
+        </p>
+
+    </div>
+
+    <div class="flex gap-4">
+
+        <a href="Projects\url-shortener.html"
+           class="bg-black text-white px-5 py-3 border-2 border-black font-bold uppercase">
+
+            CASE_STUDY
+
+        </a>
+
+        <a href="https://github.com/rakeshraj22/url-shortener-dashboard"
+           target="_blank"
+           class="border-2 border-black px-5 py-3 font-bold uppercase">
+
+            SOURCE
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- PROJECT 03 -->
+
+<div class="project-card bg-white border-4 border-black p-8 shadow-hard">
+
+    <div class="flex justify-between mb-6">
+
+        <span class="bg-neo-green border-2 border-black px-3 py-1 font-mono font-bold">
+            PROJ_03
+        </span>
+
+        <span class="border-2 border-black px-3 py-1 font-mono font-bold">
+            DISTRIBUTED SYSTEMS
+        </span>
+
+    </div>
+
+    <h2 class="text-4xl font-black uppercase mb-4">
+
+        Distributed API Rate Limiter
+
+    </h2>
+
+    <p class="font-mono mb-6">
+
+        Token Bucket based distributed rate limiting middleware
+        built using Redis atomic operations to prevent API abuse
+        and protect backend services from overload.
+
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            JAVA
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            SPRING BOOT
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            REDIS
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            TOKEN BUCKET
+        </span>
+
+    </div>
+
+    <div class="bg-neo-green border-2 border-black p-4 mb-6">
+
+        <p class="font-mono font-bold">
+
+            10,000+ RPS
+            <br>
+            Sub-50ms Validation Latency
+
+        </p>
+
+    </div>
+
+    <div class="flex gap-4">
+
+        <a href="Projects\rate-limiter.html"
+           class="bg-black text-white px-5 py-3 border-2 border-black font-bold uppercase">
+
+            CASE_STUDY
+
+        </a>
+
+        <a href="https://github.com/rakeshraj22/Distributed-rate-limiter"
+           target="_blank"
+           class="border-2 border-black px-5 py-3 font-bold uppercase">
+
+            SOURCE
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- PROJECT 04 -->
+
+<div class="project-card bg-white border-4 border-black p-8 shadow-hard">
+
+    <div class="flex justify-between mb-6">
+
+        <span class="bg-neo-pink border-2 border-black px-3 py-1 font-mono font-bold">
+            PROJ_04
+        </span>
+
+        <span class="border-2 border-black px-3 py-1 font-mono font-bold">
+            FINTECH
+        </span>
+
+    </div>
+
+    <h2 class="text-4xl font-black uppercase mb-4">
+
+        Digital Wallet Backend System
+
+    </h2>
+
+    <p class="font-mono mb-6">
+
+        Secure wallet backend supporting peer-to-peer fund transfers,
+        transaction history management and concurrent transaction processing.
+
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            JAVA
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            SPRING BOOT
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            MYSQL
+        </span>
+
+        <span class="border-2 border-black px-2 py-1 font-mono text-xs">
+            JUNIT
+        </span>
+
+    </div>
+
+    <div class="flex gap-4">
+
+        <a href="Projects\digital-wallet.html"
+           class="bg-black text-white px-5 py-3 border-2 border-black font-bold uppercase">
+
+            CASE_STUDY
+
+        </a>
+
+        <a href="https://github.com/rakeshraj22/Digital-Wallet"
+           target="_blank"
+           class="border-2 border-black px-5 py-3 font-bold uppercase">
+
+            SOURCE
+
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- MORE PROJECTS -->
+
+<section class="py-24 text-center">
+
+    <div class="bg-black text-white border-4 border-black p-12 shadow-hard-xl inline-block">
+
+        <h2 class="text-4xl font-black uppercase mb-6">
+
+            MORE PROJECTS AVAILABLE
+
+        </h2>
+
+        <p class="font-mono mb-8">
+
+            Explore additional backend projects,
+            experiments and learning repositories.
+
+        </p>
+
+        <a href="https://github.com/rakeshraj22?tab=repositories"
+           target="_blank"
+           class="bg-white text-black border-4 border-white px-8 py-4 font-black uppercase">
+
+            OPEN_GITHUB_ARCHIVE
+
+        </a>
+
+    </div>
+
+</section>
+
+</section>
+
+<footer class="bg-black text-white py-12 px-4 text-center font-mono uppercase">
+
+        <p>
+            © 2026 N RAKESH RAJ // PROJECTS 
+        </p>
+
+        <p class="text-[10px] text-gray-500 mt-2">
+            Product of Becoming Labs. Built with AI. . Product of Becoming Labs.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+    <link rel="icon" href="https://fav.farm/m🎖️">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Event-Driven Notification Service | N Rakesh Raj</title>
+
+    <meta name="description"
+        content="Kafka and RabbitMQ powered event-driven notification service built using Java and Spring Boot.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-yellow': '#FBFF48',
+                        'neo-pink': '#FF70A6',
+                        'neo-blue': '#3B82F6',
+                        'neo-green': '#33FF57',
+                        'neo-orange': '#FF9F1C',
+                        'neo-white': '#FFFDF5',
+                        'neo-black': '#121212',
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000',
+                        'hard-lg': '8px 8px 0px 0px #000',
+                        'hard-xl': '12px 12px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        body {
+            background-color: #FFFDF5;
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .card-hover {
+            transition: all .2s ease;
+        }
+
+        .card-hover:hover {
+            transform: translate(-4px, -4px);
+        }
+
+    </style>
+
+</head>
+
+<body class="text-neo-black font-display">
+
+    <!-- NAVBAR -->
+
+    <nav class="sticky top-0 z-50 p-4">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <a href="../index.html"
+                class="bg-neo-white border-4 border-black px-4 py-1 text-2xl font-black shadow-hard uppercase">
+
+                RAKESHRAJ.dev
+
+            </a>
+
+            <div class="flex gap-4">
+
+                <a href="../projects.html"
+                    class="bg-neo-yellow border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    ALL_PROJECTS
+
+                </a>
+
+                <a href="../index.html"
+                    class="bg-neo-blue text-white border-4 border-black px-4 py-2 font-bold shadow-hard uppercase">
+
+                    HOME
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="py-24 px-4 max-w-7xl mx-auto">
+
+        <div
+            class="bg-neo-orange border-8 border-black shadow-hard-xl p-10">
+
+            <div class="font-mono font-black uppercase mb-6">
+
+                PROJ_01
+
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
+
+                Event-Driven
+                <br>
+                Notification Service
+
+            </h1>
+
+            <p
+                class="font-mono text-xl bg-white border-4 border-black p-6 shadow-hard max-w-5xl">
+
+                Kafka and RabbitMQ powered notification platform supporting
+                Email, SMS and Push delivery with retry mechanisms,
+                dead-letter queues and guaranteed message processing.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-8">
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    JAVA
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    SPRING BOOT
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    KAFKA
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    RABBITMQ
+                </span>
+
+                <span class="bg-white border-2 border-black px-3 py-2 font-mono font-bold">
+                    POSTGRESQL
+                </span>
+
+            </div>
+
+            <div class="flex gap-6 mt-10">
+
+                <a href="https://github.com/rakeshraj22?tab=repositories"
+                    target="_blank"
+                    class="bg-black text-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    VIEW_SOURCE
+
+                </a>
+
+                <a href="../projects.html"
+                    class="bg-white border-4 border-black px-8 py-4 font-black shadow-hard uppercase">
+
+                    BACK_TO_PROJECTS
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- OVERVIEW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            OVERVIEW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                This project was designed to handle high-volume notifications
+                across multiple delivery channels including Email, SMS and Push.
+
+                The architecture combines Kafka for event streaming and
+                RabbitMQ for reliable asynchronous task execution.
+
+                The system includes retry mechanisms, dead-letter queues,
+                channel-based routing and fault-tolerant message handling
+                to ensure reliable notification delivery.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+        <!-- ARCHITECTURE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ARCHITECTURE
+        </h2>
+
+        <div class="bg-neo-blue border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="bg-black p-8 border-4 border-black">
+
+<pre class="text-neo-green font-mono text-sm md:text-base overflow-x-auto">
++----------------------+
+|  CLIENT APPLICATION  |
++----------+-----------+
+           |
+           v
++----------------------+
+| NOTIFICATION API     |
+| Spring Boot Service  |
++----------+-----------+
+           |
+           v
++----------------------+
+| KAFKA TOPIC          |
+| notification.events  |
++----------+-----------+
+           |
+   +-------+-------+
+   |       |       |
+   v       v       v
+
+EMAIL   SMS     PUSH
+WORKER  WORKER  WORKER
+
+   |       |       |
+   +-------+-------+
+           |
+           v
+
++----------------------+
+| RABBITMQ QUEUES      |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| RETRY QUEUE          |
++----------+-----------+
+           |
+           v
+
++----------------------+
+| DEAD LETTER QUEUE    |
++----------------------+
+</pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- KEY FEATURES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            KEY_FEATURES
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Multi Channel Delivery
+                </h3>
+
+                <p class="font-mono">
+                    Supports Email, SMS and Push notifications
+                    through independent processing pipelines.
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Kafka Event Streaming
+                </h3>
+
+                <p class="font-mono">
+                    Notification requests are published as events,
+                    enabling asynchronous processing and scalability.
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    RabbitMQ Workers
+                </h3>
+
+                <p class="font-mono">
+                    Dedicated workers consume messages reliably
+                    and process delivery tasks independently.
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-6 shadow-hard card-hover">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Dead Letter Queue
+                </h3>
+
+                <p class="font-mono">
+                    Failed deliveries are isolated into a DLQ
+                    for investigation and replay.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- KAFKA WORKFLOW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            KAFKA_WORKFLOW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <ol class="font-mono text-lg space-y-4">
+
+                <li>
+                    1. Client submits a notification request.
+                </li>
+
+                <li>
+                    2. Notification API validates payload.
+                </li>
+
+                <li>
+                    3. Event is published to Kafka topic.
+                </li>
+
+                <li>
+                    4. Consumer groups subscribe independently.
+                </li>
+
+                <li>
+                    5. Messages are routed to delivery workers.
+                </li>
+
+                <li>
+                    6. Workers acknowledge successful processing.
+                </li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+    <!-- RABBITMQ WORKFLOW -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            RABBITMQ_WORKFLOW
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <ol class="font-mono text-lg space-y-4">
+
+                <li>
+                    1. Delivery task enters RabbitMQ queue.
+                </li>
+
+                <li>
+                    2. Worker consumes task.
+                </li>
+
+                <li>
+                    3. Delivery attempted.
+                </li>
+
+                <li>
+                    4. Success → ACK message.
+                </li>
+
+                <li>
+                    5. Failure → Retry Queue.
+                </li>
+
+                <li>
+                    6. Retry exhausted → Dead Letter Queue.
+                </li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+
+        <!-- RETRY STRATEGY -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            RETRY_STRATEGY
+        </h2>
+
+        <div class="bg-neo-yellow border-4 border-black p-8 shadow-hard-xl">
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="text-2xl font-black uppercase mb-4">
+                        Attempt 01
+                    </h3>
+
+                    <p class="font-mono">
+                        Initial delivery attempt immediately after queue consumption.
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="text-2xl font-black uppercase mb-4">
+                        Attempt 02
+                    </h3>
+
+                    <p class="font-mono">
+                        Failed messages are redirected to retry queues
+                        with configurable delay intervals.
+                    </p>
+
+                </div>
+
+                <div class="bg-white border-4 border-black p-6">
+
+                    <h3 class="text-2xl font-black uppercase mb-4">
+                        Final Failure
+                    </h3>
+
+                    <p class="font-mono">
+                        Messages exceeding retry limits are moved
+                        into the Dead Letter Queue.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DEAD LETTER QUEUE -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            DEAD_LETTER_QUEUE
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-lg">
+
+            <p class="font-mono text-lg mb-6">
+
+                The Dead Letter Queue (DLQ) captures permanently failed
+                notifications and prevents message loss.
+
+            </p>
+
+            <ul class="font-mono text-lg space-y-4">
+
+                <li>✓ Prevents silent delivery failures</li>
+                <li>✓ Enables manual replay of failed events</li>
+                <li>✓ Supports operational monitoring</li>
+                <li>✓ Simplifies debugging and auditing</li>
+                <li>✓ Improves reliability of notification workflows</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- ENGINEERING CHALLENGES -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            ENGINEERING_CHALLENGES
+        </h2>
+
+        <div class="space-y-8">
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Reliable Delivery
+                </h3>
+
+                <p class="font-mono">
+
+                    Ensuring notifications are not lost during worker failures
+                    required acknowledgement handling, retries and queue durability.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Channel Isolation
+                </h3>
+
+                <p class="font-mono">
+
+                    Email, SMS and Push channels were isolated into
+                    dedicated processing flows to prevent cascading failures.
+
+                </p>
+
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-hard">
+
+                <h3 class="text-3xl font-black uppercase mb-4">
+                    Scalability
+                </h3>
+
+                <p class="font-mono">
+
+                    Kafka consumer groups enable horizontal scaling
+                    as notification volume increases.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RESULTS -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            RESULTS
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="bg-neo-green border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    3
+                </div>
+
+                <p class="font-mono font-bold">
+                    DELIVERY CHANNELS
+                </p>
+
+            </div>
+
+            <div class="bg-neo-blue text-white border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    2
+                </div>
+
+                <p class="font-mono font-bold">
+                    MESSAGE BROKERS
+                </p>
+
+            </div>
+
+            <div class="bg-neo-pink border-4 border-black p-8 shadow-hard text-center">
+
+                <div class="text-6xl font-black mb-4">
+                    DLQ
+                </div>
+
+                <p class="font-mono font-bold">
+                    FAILURE RECOVERY
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LESSONS LEARNED -->
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+
+        <h2 class="text-6xl font-black uppercase mb-12">
+            LESSONS_LEARNED
+        </h2>
+
+        <div class="bg-white border-4 border-black p-8 shadow-hard-xl">
+
+            <p class="font-mono text-lg leading-relaxed">
+
+                This project strengthened my understanding of
+                event-driven architecture, asynchronous processing,
+                distributed messaging systems, fault tolerance,
+                retry strategies and scalable backend design.
+
+                Building the system provided practical experience with
+                Kafka event streaming, RabbitMQ task processing and
+                designing resilient backend services using Spring Boot.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="py-24 px-4 max-w-4xl mx-auto text-center">
+
+        <div class="bg-neo-orange border-4 border-black p-12 shadow-hard-xl">
+
+            <h2 class="text-5xl font-black uppercase mb-8">
+
+                VIEW_SOURCE_CODE
+
+            </h2>
+
+            <a href="https://github.com/rakeshraj22?tab=repositories"
+                target="_blank"
+                class="bg-black text-white border-4 border-black px-10 py-5 text-xl font-bold shadow-hard uppercase inline-block">
+
+                OPEN_GITHUB
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-black text-white py-12 px-4 text-center font-mono uppercase">
+
+        <p>
+            © 2026 N RAKESH RAJ // EVENT_DRIVEN_NOTIFICATION_SERVICE
+        </p>
+
+        <p class="text-[10px] text-gray-500 mt-2">
+            Product of Becoming Labs. Built with AI.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
